@@ -1,0 +1,25 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+config/name="Hetet"
+run/main_scene="res://scenes/common/Main.tscn"
+config/features=PackedStringArray("4.2")
+
+[display]
+window/size/viewport_width=1920
+window/size/viewport_height=1200
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[input]
+move_left={"deadzone":0.5,"events":[Object(InputEventScreenTouch,"device":-1),Object(InputEventKey,"physical_keycode":65)]}
+move_right={"deadzone":0.5,"events":[Object(InputEventScreenTouch,"device":-1),Object(InputEventKey,"physical_keycode":68)]}
+jump={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":32)]}
+
+[rendering]
+renderer/rendering_method="mobile"
+textures/canvas_textures/default_texture_filter=0
+
+[physics]
+2d/run_on_separate_thread=true
