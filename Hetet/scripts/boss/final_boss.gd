@@ -99,7 +99,7 @@ func _handle_movement(delta: float) -> void:
 
 func _handle_attacks(delta: float) -> void:
 	_attack_timer += delta
-	var interval := ATTACK_INTERVALS[phase - 1]
+	var interval: float = ATTACK_INTERVALS[phase - 1]
 	if _attack_timer >= interval:
 		_attack_timer = 0.0
 		_fire_projectile()

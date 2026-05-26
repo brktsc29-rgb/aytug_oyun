@@ -41,9 +41,9 @@ var platform_styles := [
 ## Returns a layout descriptor for one level section at the given difficulty.
 ## difficulty 0 = tutorial, 1-3 = normal, 4-6 = hard, 7+ = expert.
 func generate_section(difficulty: int) -> Dictionary:
-	var style_idx := clamp(difficulty / 3, 0, platform_styles.size() - 1)
-	var trap_count := clamp(difficulty + 1, 1, 8)
-	var puzzle_count := clamp(difficulty / 3, 0, 4)
+	var style_idx: int = clamp(difficulty / 3, 0, platform_styles.size() - 1)
+	var trap_count: int = clamp(difficulty + 1, 1, 8)
+	var puzzle_count: int = clamp(difficulty / 3, 0, 4)
 
 	return {
 		# Total horizontal length of the section in pixels

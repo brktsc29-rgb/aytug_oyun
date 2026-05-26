@@ -41,5 +41,4 @@ func _on_body_entered(body: Node2D) -> void:
 	tw.tween_property(_visual, "color", Color(0.15, 1.0, 0.35), 0.3)  # green
 
 	# Optional audio feedback
-	if AudioManager.has_method("play_sfx"):
-		AudioManager.play_sfx("checkpoint_activate")
+	pass  # AudioManager.play_sfx(preload("res://assets/audio/sfx/checkpoint.ogg")) when added
