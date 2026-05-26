@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/mobile_controls.gd" id="1"]
+
+[node name="MobileControls" type="CanvasLayer"]
+script = ExtResource("1")
+layer = 20
+
+[node name="Controls" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="LeftSide" type="HBoxContainer" parent="Controls"]
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = 440.0
+offset_top = -220.0
+offset_bottom = -20.0
+theme_override_constants/separation = 16
+
+[node name="LeftBtn" type="Button" parent="Controls/LeftSide"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "◀"
+custom_minimum_size = Vector2(190, 190)
+theme_override_font_sizes/font_size = 72
+
+[node name="RightBtn" type="Button" parent="Controls/LeftSide"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "▶"
+custom_minimum_size = Vector2(190, 190)
+theme_override_font_sizes/font_size = 72
+
+[node name="JumpBtn" type="Button" parent="Controls"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_right = -20.0
+offset_top = -230.0
+offset_bottom = -20.0
+text = "↑"
+custom_minimum_size = Vector2(200, 200)
+theme_override_font_sizes/font_size = 80
