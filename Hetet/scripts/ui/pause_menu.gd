@@ -32,7 +32,12 @@ func _build_ui() -> void:
 	panel.set_anchors_preset(Control.PRESET_CENTER)
 
 	var panel_style: StyleBoxFlat = StyleBoxFlat.new()
-	panel_style.bg_color = Color(0.08, 0.04, 0.18)
+	panel_style.bg_color = Color(0.06, 0.02, 0.16)
+	panel_style.border_color = Color(0.52, 0.28, 1.0, 0.90)
+	panel_style.border_width_bottom = 4
+	panel_style.border_width_top    = 4
+	panel_style.border_width_left   = 4
+	panel_style.border_width_right  = 4
 	panel_style.corner_radius_top_left     = 24
 	panel_style.corner_radius_top_right    = 24
 	panel_style.corner_radius_bottom_left  = 24
