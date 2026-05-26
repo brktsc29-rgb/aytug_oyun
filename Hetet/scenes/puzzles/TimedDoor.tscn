@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/puzzles/timed_door.gd" id="1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(40.0, 180.0)
+
+[node name="TimedDoor" type="AnimatableBody2D"]
+script = ExtResource("1")
+collision_layer = 1
+collision_mask = 0
+sync_to_physics = true
+
+[node name="Visual" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -90.0
+offset_right = 20.0
+offset_bottom = 90.0
+color = Color(0.6, 0.3, 0.1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1")
