@@ -31,6 +31,7 @@ const DODGE_PLATFORMS := [
 
 func _ready() -> void:
 	VillainDialog.show_dialog("boss_phase_1")
+	_create_background()
 	_generate_arena()
 	_spawn_player()
 	_spawn_boss()
@@ -39,6 +40,42 @@ func _ready() -> void:
 # ---------------------------------------------------------------------------
 # Arena construction
 # ---------------------------------------------------------------------------
+
+func _create_background() -> void:
+	# Dark dramatic sky
+	var bands: Array = [
+		[Color(0.04, 0.01, 0.10), -600],
+		[Color(0.08, 0.02, 0.18), -300],
+		[Color(0.12, 0.04, 0.25),    0],
+		[Color(0.16, 0.06, 0.30),  300],
+	]
+	for b in bands:
+		var strip := ColorRect.new()
+		strip.size = Vector2(2200, 350)
+		strip.position = Vector2(-200, b[1])
+		strip.color = b[0]
+		strip.z_index = -20
+		add_child(strip)
+
+	# Red cracks/glow on floor
+	var glow := ColorRect.new()
+	glow.size = Vector2(2200, 80)
+	glow.position = Vector2(-200, FLOOR_Y - 10)
+	glow.color = Color(0.6, 0.04, 0.04, 0.35)
+	glow.z_index = -18
+	add_child(glow)
+
+	# Stars in background
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 999
+	for _i in 50:
+		var star := ColorRect.new()
+		var sz: float = rng.randf_range(1.5, 4.0)
+		star.size = Vector2(sz, sz)
+		star.position = Vector2(rng.randf_range(-100, 1800), rng.randf_range(-500, 600))
+		star.color = Color(1, 0.85, 0.5, rng.randf_range(0.3, 0.8))
+		star.z_index = -18
+		add_child(star)
 
 ## Builds the arena floor, ceiling, side walls, and dodge platforms.
 func _generate_arena() -> void:
@@ -90,6 +127,12 @@ func _make_platform(pos: Vector2, size: Vector2, colour: Color) -> void:
 	visual.size = size
 	visual.color = colour
 	body.add_child(visual)
+
+	# Red/purple top highlight
+	var hi := ColorRect.new()
+	hi.size = Vector2(size.x, 5)
+	hi.color = Color(minf(colour.r + 0.25, 1.0), minf(colour.g + 0.12, 1.0), minf(colour.b + 0.30, 1.0), 0.9)
+	body.add_child(hi)
 
 
 # ---------------------------------------------------------------------------

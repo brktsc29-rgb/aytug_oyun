@@ -11,7 +11,7 @@ extends Area2D
 
 var _collected := false
 
-@onready var visual: ColorRect = $Visual
+@onready var visual: Node2D = $Visual
 
 
 func _ready() -> void:
