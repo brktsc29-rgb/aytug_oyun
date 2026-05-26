@@ -15,55 +15,16 @@ const TYPE_SPEED: float = 0.035
 ## Child-friendly Turkish villain lines for MALAKOR.
 ## All text is written to be readable and fun for young players.
 const LINES: Dictionary = {
-	"intro": (
-		"Ben MALAKOR! Bu diyarın en kötü, en güçlü, en muhteşem kötü adamıyım! "
-		"Sen ise sadece küçük bir kahraman olmaya çalışıyorsun... Hah! "
-		"Bu macera seni çok zorlayacak, inan bana!"
-	),
-	"normal_world": (
-		"Buraları benim topraklarım! Her çimen, her taş, her bulut... "
-		"hepsi MALAKOR'a aittir! Sen burada ne arıyorsun, küçük cesur?"
-	),
-	"candy_world": (
-		"Şeker Dünyam'a hoş geldin! Ama sakın bir tane bile şeker yeme! "
-		"Çünkü buradaki her şey BENİMDİR! "
-		"MALAKOR'un şekerlerine el uzatanın pişman olacağını bil!"
-	),
-	"boss_phase_1": (
-		"Hmm... Buraya kadar gelebildin ha? Fena değil, ama asıl oyun şimdi başlıyor! "
-		"MALAKOR'u yenebileceğini mi sanıyorsun? "
-		"O zaman gel de görelim, küçük kahraman!"
-	),
-	"boss_phase_2": (
-		"Yeterince şans kullandın! Artık gerçek gücümü gösterme zamanı geldi! "
-		"Dikkatli ol çünkü MALAKOR bu seferinde şakaya gelmiyor! "
-		"Titreme sırası sende!"
-	),
-	"boss_phase_3": (
-		"Bu... bu olamaz! Nasıl bu kadar ileri gelebildin?! "
-		"Pekâlâ, son kozumu oynuyorum! "
-		"MALAKOR hiçbir zaman teslim olmaz... ama bu sefer çok sıkıştım!"
-	),
-	"player_died": (
-		"Ha ha ha! Gördün mü! MALAKOR her zaman kazanır! "
-		"Ama... merak etme, tekrar deneyebilirsin. "
-		"Belki bu sefer biraz daha dikkatli olursun. Belki!"
-	),
-	"checkpoint": (
-		"Kontrol noktasını buldun, akıllıca! "
-		"Bu küçük başarının tadını çıkar, çünkü önünde çok daha büyük tehlikeler var. "
-		"MALAKOR seni hazırlıksız yakalamayı çok sever!"
-	),
-	"boss_defeated": (
-		"İ-İnanılmaz... Gerçekten kaybettim mi? Ben... MALAKOR... yenildim mi?! "
-		"Bu bitmedi! Çok yakında geri döneceğim! "
-		"Bekle beni, küçük kahraman... bekle beni!"
-	),
-	"world_complete": (
-		"Bu dünyayı geçmeyi başardın, tebrikler... Ama sevinme! "
-		"Önünde daha nicesi var ve MALAKOR onların hepsinde seni bekliyor. "
-		"Hazır mısın? Ben her zaman hazırım!"
-	),
+	"intro": "Ben MALAKOR! Bu diyarın en kötü, en güçlü, en muhteşem kötü adamıyım! Bu macera seni çok zorlayacak, inan bana!",
+	"normal_world": "Buraları benim topraklarım! Her çimen, her taş, her bulut... hepsi MALAKOR'a aittir! Sen burada ne arıyorsun, küçük cesur?",
+	"candy_world": "Şeker Dünyam'a hoş geldin! Ama sakın bir tane bile şeker yeme! MALAKOR'un şekerlerine el uzatanın pişman olacağını bil!",
+	"boss_phase_1": "Hmm... Buraya kadar gelebildin ha? Fena değil, ama asıl oyun şimdi başlıyor! O zaman gel de görelim, küçük kahraman!",
+	"boss_phase_2": "Yeterince şans kullandın! Artık gerçek gücümü gösterme zamanı geldi! Titreme sırası sende!",
+	"boss_phase_3": "Bu... bu olamaz! Nasıl bu kadar ileri gelebildin?! Pekala, son kozumu oynuyorum! MALAKOR hiçbir zaman teslim olmaz!",
+	"player_died": "Ha ha ha! Gördün mü! MALAKOR her zaman kazanır! Ama merak etme, tekrar deneyebilirsin. Belki!",
+	"checkpoint": "Kontrol noktasını buldun, akıllıca! Bu küçük başarının tadını çıkar, önünde çok daha büyük tehlikeler var!",
+	"boss_defeated": "İnanılmaz... Gerçekten kaybettim mi? Ben... MALAKOR... yenildim mi?! Bu bitmedi, geri döneceğim!",
+	"world_complete": "Bu dünyayı geçmeyi başardın, tebrikler... Ama sevinme! MALAKOR bir sonrakinde seni bekliyor!",
 }
 
 # ---------------------------------------------------------------------------

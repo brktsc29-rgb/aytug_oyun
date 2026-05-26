@@ -178,9 +178,7 @@ func _show_win_screen() -> void:
 	btn.size = Vector2(200.0, 60.0)
 	overlay.add_child(btn)
 
-	btn.pressed.connect(func() -> void:
-		GameManager.change_state("MAIN_MENU")
-	)
+	btn.pressed.connect(GameManager.go_to_main_menu)
 
 	# Fade the overlay in
 	overlay.modulate.a = 0.0

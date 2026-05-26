@@ -32,8 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 	body.collect_coin(value)
 
 	# Play pickup sound via AudioManager if available
-	if AudioManager.has_method("play_sfx"):
-		AudioManager.play_sfx("coin_pickup")
+	pass  # AudioManager.play_sfx(preload("res://assets/audio/sfx/coin.ogg")) when added
 
 	# Pop animation: scale to zero then free
 	var tw: Tween = create_tween()
