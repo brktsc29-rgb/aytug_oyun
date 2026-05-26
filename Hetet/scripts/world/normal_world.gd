@@ -14,8 +14,9 @@ const MOVING_PLATFORM_SCENE:  PackedScene = preload("res://scenes/traps/MovingPl
 const FALLING_PLATFORM_SCENE: PackedScene = preload("res://scenes/traps/FallingPlatform.tscn")
 const HUD_SCENE:              PackedScene = preload("res://scenes/ui/HUD.tscn")
 const CONTROLS_SCENE:         PackedScene = preload("res://scenes/ui/MobileControls.tscn")
+const TREE_TEX:               Texture2D   = preload("res://assets/sprites/tree.svg")
+const CLOUD_TEX:              Texture2D   = preload("res://assets/sprites/cloud.svg")
 
-# Reference to the spawned player
 var player: Player = null
 
 # ---------------------------------------------------------------------------
@@ -129,16 +130,29 @@ func _create_background() -> void:
 	earth.z_index = -20
 	add_child(earth)
 
-	# Clouds
+	# Clouds (SVG sprites)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 77
-	for _i in 12:
-		var cloud := ColorRect.new()
-		cloud.size = Vector2(rng.randf_range(90, 200), rng.randf_range(32, 56))
-		cloud.position = Vector2(rng.randf_range(-100, 2900), rng.randf_range(-620, -60))
-		cloud.color = Color(1.0, 1.0, 1.0, rng.randf_range(0.52, 0.80))
+	for _i in 10:
+		var cloud := Sprite2D.new()
+		cloud.texture = CLOUD_TEX
+		var sc: float = rng.randf_range(0.7, 1.4)
+		cloud.scale = Vector2(sc, sc)
+		cloud.modulate = Color(1.0, 1.0, 1.0, rng.randf_range(0.55, 0.88))
+		cloud.position = Vector2(rng.randf_range(-50, 2900), rng.randf_range(-560, -80))
 		cloud.z_index = -16
 		add_child(cloud)
+
+	# Trees along the ground
+	rng.seed = 200
+	for _i in 14:
+		var tree := Sprite2D.new()
+		tree.texture = TREE_TEX
+		var sc2: float = rng.randf_range(0.6, 1.1)
+		tree.scale = Vector2(sc2, sc2)
+		tree.position = Vector2(rng.randf_range(-100, 2950), 445.0)
+		tree.z_index = -14
+		add_child(tree)
 
 # ---------------------------------------------------------------------------
 # Platform factory

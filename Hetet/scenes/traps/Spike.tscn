@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/traps/spike.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/spike.svg" id="2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
-size = Vector2(36.0, 30.0)
+size = Vector2(36.0, 28.0)
 
 [node name="Spike" type="Area2D"]
 script = ExtResource("1")
@@ -12,13 +13,10 @@ collision_mask = 2
 monitoring = true
 monitorable = false
 
-[node name="Visual" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-18, 16, 0, -16, 18, 16)
-color = Color(0.92, 0.18, 0.08, 1)
-
-[node name="Shine" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-6, 16, 0, -8, 6, 16)
-color = Color(1.0, 0.55, 0.10, 0.75)
+[node name="Visual" type="Sprite2D" parent="."]
+texture = ExtResource("2")
+offset = Vector2(0, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1")
+position = Vector2(0, 2)

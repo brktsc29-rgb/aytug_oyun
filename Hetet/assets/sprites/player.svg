@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="96" viewBox="0 0 64 96">
+  <!-- Hat crown -->
+  <rect x="18" y="2" width="28" height="20" rx="6" fill="#2a0f05"/>
+  <!-- Hat band accent -->
+  <rect x="16" y="18" width="32" height="4" rx="2" fill="#8b4513" opacity="0.6"/>
+  <!-- Hat brim -->
+  <rect x="10" y="20" width="44" height="7" rx="3.5" fill="#3d1a08"/>
+  <!-- Hat crown shine -->
+  <rect x="21" y="4" width="14" height="3" rx="2" fill="white" opacity="0.18"/>
+
+  <!-- Head -->
+  <rect x="15" y="24" width="34" height="26" rx="12" fill="#f2b97a"/>
+  <!-- Head shading -->
+  <rect x="15" y="36" width="34" height="14" rx="10" fill="#d99650" opacity="0.35"/>
+
+  <!-- Eyes (white) -->
+  <ellipse cx="24" cy="33" rx="6.5" ry="7" fill="white"/>
+  <ellipse cx="40" cy="33" rx="6.5" ry="7" fill="white"/>
+  <!-- Pupils -->
+  <circle cx="25" cy="34" r="4.5" fill="#0d0525"/>
+  <circle cx="41" cy="34" r="4.5" fill="#0d0525"/>
+  <!-- Iris highlight -->
+  <circle cx="24" cy="33" r="2" fill="#3a2080" opacity="0.6"/>
+  <circle cx="40" cy="33" r="2" fill="#3a2080" opacity="0.6"/>
+  <!-- Eye shine -->
+  <circle cx="26.5" cy="31" r="1.8" fill="white"/>
+  <circle cx="42.5" cy="31" r="1.8" fill="white"/>
+
+  <!-- Eyebrows -->
+  <path d="M18 26 C21 23 26 23 29 26" stroke="#7a3a10" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M35 26 C38 23 43 23 46 26" stroke="#7a3a10" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Cheeks -->
+  <ellipse cx="18" cy="41" rx="4.5" ry="3.5" fill="#ff8888" opacity="0.42"/>
+  <ellipse cx="46" cy="41" rx="4.5" ry="3.5" fill="#ff8888" opacity="0.42"/>
+
+  <!-- Mouth smile -->
+  <path d="M25 43 Q32 49 39 43" stroke="#b05828" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+
+  <!-- Shirt / body (light so modulate skin tint works well) -->
+  <rect x="13" y="47" width="38" height="26" rx="8" fill="#f0f0f0"/>
+  <!-- Shirt crease / outline -->
+  <rect x="13" y="47" width="38" height="26" rx="8" fill="none" stroke="#cccccc" stroke-width="1.5"/>
+  <!-- Collar V -->
+  <path d="M28 47 L32 53 L36 47" fill="#dcdcdc" stroke="#cccccc" stroke-width="1"/>
+  <!-- Shirt highlight strip -->
+  <rect x="17" y="50" width="16" height="3" rx="2" fill="white" opacity="0.55"/>
+  <!-- Shirt button -->
+  <circle cx="32" cy="58" r="2" fill="#aaaaaa" opacity="0.6"/>
+  <circle cx="32" cy="64" r="2" fill="#aaaaaa" opacity="0.6"/>
+
+  <!-- Left arm -->
+  <rect x="2" y="47" width="13" height="22" rx="6.5" fill="#f0f0f0"/>
+  <rect x="2" y="47" width="13" height="22" rx="6.5" fill="none" stroke="#cccccc" stroke-width="1"/>
+  <!-- Right arm -->
+  <rect x="49" y="47" width="13" height="22" rx="6.5" fill="#f0f0f0"/>
+  <rect x="49" y="47" width="13" height="22" rx="6.5" fill="none" stroke="#cccccc" stroke-width="1"/>
+
+  <!-- Hands -->
+  <circle cx="8.5" cy="71" r="6.5" fill="#f2b97a"/>
+  <circle cx="55.5" cy="71" r="6.5" fill="#f2b97a"/>
+  <circle cx="8.5" cy="71" r="6.5" fill="none" stroke="#d99650" stroke-width="1"/>
+  <circle cx="55.5" cy="71" r="6.5" fill="none" stroke="#d99650" stroke-width="1"/>
+
+  <!-- Belt -->
+  <rect x="13" y="66" width="38" height="6" rx="3" fill="#3d1a08"/>
+  <!-- Belt highlight -->
+  <rect x="15" y="67" width="10" height="2" rx="1" fill="white" opacity="0.15"/>
+  <!-- Buckle -->
+  <rect x="27" y="67" width="10" height="4" rx="1.5" fill="#c8a028"/>
+  <rect x="29" y="68" width="6" height="2" rx="1" fill="#f0d060"/>
+
+  <!-- Pants left leg -->
+  <rect x="13" y="70" width="17" height="20" rx="6" fill="#22104a"/>
+  <!-- Pants right leg -->
+  <rect x="34" y="70" width="17" height="20" rx="6" fill="#22104a"/>
+  <!-- Pants highlight -->
+  <rect x="15" y="72" width="7" height="3" rx="2" fill="white" opacity="0.14"/>
+  <rect x="36" y="72" width="7" height="3" rx="2" fill="white" opacity="0.14"/>
+
+  <!-- Left boot -->
+  <rect x="10" y="83" width="22" height="12" rx="5" fill="#1e0a02"/>
+  <!-- Right boot -->
+  <rect x="32" y="83" width="22" height="12" rx="5" fill="#1e0a02"/>
+  <!-- Boot shine -->
+  <rect x="12" y="85" width="9" height="3" rx="2" fill="white" opacity="0.22"/>
+  <rect x="34" y="85" width="9" height="3" rx="2" fill="white" opacity="0.22"/>
+  <!-- Boot sole -->
+  <rect x="9" y="92" width="24" height="3" rx="2" fill="#0a0402"/>
+  <rect x="31" y="92" width="24" height="3" rx="2" fill="#0a0402"/>
+</svg>
