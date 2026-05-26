@@ -16,20 +16,71 @@ const PAUSE_MENU_SCENE: String = "res://scenes/ui/PauseMenu.tscn"
 func _ready() -> void:
 	layer = 10
 
-	# Connect to GameManager coin signal
 	GameManager.coins_updated.connect(_on_coins_updated)
-
-	# Initialise display with current coin count
 	_on_coins_updated(GameManager.get_coins())
-
-	# Pause button
 	pause_btn.pressed.connect(_on_pause)
+
+	_style_hud()
+
+# ---------------------------------------------------------------------------
+# Visual styling
+# ---------------------------------------------------------------------------
+func _style_hud() -> void:
+	# Dark gradient background strip
+	var bar_bg := ColorRect.new()
+	bar_bg.anchor_right = 1.0
+	bar_bg.offset_bottom = 94.0
+	bar_bg.color = Color(0.04, 0.02, 0.18, 0.86)
+	add_child(bar_bg)
+	move_child(bar_bg, 0)
+
+	# Purple accent line at bottom of bar
+	var accent := ColorRect.new()
+	accent.anchor_right = 1.0
+	accent.offset_top    = 90.0
+	accent.offset_bottom = 95.0
+	accent.color = Color(0.55, 0.28, 1.0, 0.72)
+	add_child(accent)
+
+	# Coin label — gold colour
+	coin_label.add_theme_color_override("font_color", Color(1.0, 0.88, 0.18))
+
+	# World label — soft purple
+	world_label.add_theme_color_override("font_color", Color(0.78, 0.68, 1.0))
+
+	# Pause button — purple rounded
+	var pn := _hud_btn_style(Color(0.28, 0.12, 0.62, 0.90), Color(0.58, 0.35, 1.0, 0.85))
+	var ph := _hud_btn_style(Color(0.40, 0.20, 0.80, 0.94), Color(0.72, 0.50, 1.0, 0.95))
+	var pp := _hud_btn_style(Color(0.16, 0.06, 0.38, 0.95), Color(0.42, 0.22, 0.78, 0.75))
+	pause_btn.add_theme_stylebox_override("normal",  pn)
+	pause_btn.add_theme_stylebox_override("hover",   ph)
+	pause_btn.add_theme_stylebox_override("pressed", pp)
+	pause_btn.add_theme_color_override("font_color", Color(1, 1, 1))
+	pause_btn.text = "⏸"
+
+func _hud_btn_style(bg: Color, border: Color) -> StyleBoxFlat:
+	var s := StyleBoxFlat.new()
+	s.bg_color = bg
+	s.border_color = border
+	s.border_width_bottom = 3
+	s.border_width_top    = 3
+	s.border_width_left   = 3
+	s.border_width_right  = 3
+	s.corner_radius_top_left     = 12
+	s.corner_radius_top_right    = 12
+	s.corner_radius_bottom_left  = 12
+	s.corner_radius_bottom_right = 12
+	s.content_margin_left   = 16.0
+	s.content_margin_right  = 16.0
+	s.content_margin_top    = 8.0
+	s.content_margin_bottom = 8.0
+	return s
 
 # ---------------------------------------------------------------------------
 # Coin display
 # ---------------------------------------------------------------------------
 func _on_coins_updated(total: int) -> void:
-	coin_label.text = "Sikke: %d" % total
+	coin_label.text = "✦ %d" % total
 	_bounce_label(coin_label)
 
 func _bounce_label(label: Label) -> void:
