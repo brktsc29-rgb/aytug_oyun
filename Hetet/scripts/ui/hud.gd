@@ -43,9 +43,9 @@ func _bounce_label(label: Label) -> void:
 # ---------------------------------------------------------------------------
 # World name
 # ---------------------------------------------------------------------------
-func set_world_name(name: String) -> void:
+func set_world_name(world_name: String) -> void:
 	if is_instance_valid(world_label):
-		world_label.text = name
+		world_label.text = world_name
 
 # ---------------------------------------------------------------------------
 # Player binding
