@@ -35,6 +35,8 @@ func _ready() -> void:
 # Level generation — tighter, harder, candy-themed
 # ---------------------------------------------------------------------------
 func _generate_level() -> void:
+	_create_background()
+
 	# ── Ground strip (thinner, trickier) ─────────────────────────────────────
 	_create_platform(Vector2(-200.0, 540.0), Vector2(600.0, 60.0), _COLOR_GROUND)
 	# Mid-level floor islands
@@ -159,6 +161,59 @@ func _generate_level() -> void:
 	_create_world_exit(Vector2(3750.0, 440.0))
 
 # ---------------------------------------------------------------------------
+# Background
+# ---------------------------------------------------------------------------
+func _create_background() -> void:
+	# Candy sky — pink-to-light-lavender gradient
+	var bands: Array = [
+		[Color(0.78, 0.36, 0.85), -700],
+		[Color(0.88, 0.54, 0.92), -350],
+		[Color(0.95, 0.70, 0.96),    0],
+		[Color(1.00, 0.86, 0.98),  350],
+	]
+	for b in bands:
+		var strip := ColorRect.new()
+		strip.size = Vector2(5200, 400)
+		strip.position = Vector2(-500, b[1])
+		strip.color = b[0]
+		strip.z_index = -20
+		add_child(strip)
+
+	# Sugary ground fill
+	var earth := ColorRect.new()
+	earth.size = Vector2(5200, 600)
+	earth.position = Vector2(-500, 520)
+	earth.color = Color(0.68, 0.24, 0.42)
+	earth.z_index = -20
+	add_child(earth)
+
+	# Candy cane poles in background
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 321
+	for _i in 10:
+		var pole := ColorRect.new()
+		pole.size = Vector2(14, 160)
+		pole.position = Vector2(rng.randf_range(-100, 3800), rng.randf_range(340, 440))
+		pole.color = Color(1.0, 0.22, 0.22, 0.72)
+		pole.z_index = -15
+		add_child(pole)
+
+	# Floating candy dots (small circles)
+	for _i in 18:
+		var dot := ColorRect.new()
+		var ds: float = rng.randf_range(8, 18)
+		dot.size = Vector2(ds, ds)
+		dot.position = Vector2(rng.randf_range(-100, 3900), rng.randf_range(-550, 300))
+		dot.color = Color(
+			rng.randf_range(0.8, 1.0),
+			rng.randf_range(0.3, 0.8),
+			rng.randf_range(0.4, 0.9),
+			rng.randf_range(0.4, 0.7)
+		)
+		dot.z_index = -15
+		add_child(dot)
+
+# ---------------------------------------------------------------------------
 # Platform factory
 # ---------------------------------------------------------------------------
 func _create_platform(pos: Vector2, size: Vector2, color: Color) -> StaticBody2D:
@@ -172,11 +227,26 @@ func _create_platform(pos: Vector2, size: Vector2, color: Color) -> StaticBody2D
 	shape.shape = rect
 	body.add_child(shape)
 
+	# Main body
 	var visual: ColorRect = ColorRect.new()
 	visual.color = color
 	visual.size = size
 	visual.position = -size * 0.5
 	body.add_child(visual)
+
+	# Candy shine on top
+	var hi := ColorRect.new()
+	hi.color = Color(minf(color.r + 0.30, 1.0), minf(color.g + 0.30, 1.0), minf(color.b + 0.30, 1.0), 0.90)
+	hi.size = Vector2(size.x, 5)
+	hi.position = Vector2(-size.x * 0.5, -size.y * 0.5)
+	body.add_child(hi)
+
+	# Bottom shadow
+	var sh := ColorRect.new()
+	sh.color = Color(maxf(color.r - 0.20, 0.0), maxf(color.g - 0.20, 0.0), maxf(color.b - 0.20, 0.0))
+	sh.size = Vector2(size.x, 5)
+	sh.position = Vector2(-size.x * 0.5, size.y * 0.5 - 5)
+	body.add_child(sh)
 
 	return body
 

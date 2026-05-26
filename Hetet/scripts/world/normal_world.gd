@@ -31,8 +31,10 @@ func _ready() -> void:
 # Level generation
 # ---------------------------------------------------------------------------
 func _generate_level() -> void:
+	_create_background()
+
 	# ── Ground ────────────────────────────────────────────────────────────────
-	_create_platform(Vector2(-200.0, 500.0), Vector2(3000.0, 80.0), Color(0.2, 0.6, 0.15))
+	_create_platform(Vector2(-200.0, 500.0), Vector2(3000.0, 80.0), Color(0.22, 0.62, 0.16))
 
 	# ── Platforms ─────────────────────────────────────────────────────────────
 	# Layout: gradually ascending path with deliberate gaps.
@@ -101,6 +103,44 @@ func _generate_level() -> void:
 	_create_world_exit(Vector2(2900.0, 400.0))
 
 # ---------------------------------------------------------------------------
+# Background
+# ---------------------------------------------------------------------------
+func _create_background() -> void:
+	# Sky gradient strips (4 horizontal bands)
+	var bands: Array = [
+		[Color(0.10, 0.28, 0.72), -700],
+		[Color(0.18, 0.44, 0.86), -350],
+		[Color(0.34, 0.62, 0.96),    0],
+		[Color(0.58, 0.82, 1.00),  350],
+	]
+	for b in bands:
+		var strip := ColorRect.new()
+		strip.size = Vector2(4500, 400)
+		strip.position = Vector2(-500, b[1])
+		strip.color = b[0]
+		strip.z_index = -20
+		add_child(strip)
+
+	# Earth fill below ground
+	var earth := ColorRect.new()
+	earth.size = Vector2(4500, 800)
+	earth.position = Vector2(-500, 530)
+	earth.color = Color(0.30, 0.18, 0.08)
+	earth.z_index = -20
+	add_child(earth)
+
+	# Clouds
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 77
+	for _i in 12:
+		var cloud := ColorRect.new()
+		cloud.size = Vector2(rng.randf_range(90, 200), rng.randf_range(32, 56))
+		cloud.position = Vector2(rng.randf_range(-100, 2900), rng.randf_range(-620, -60))
+		cloud.color = Color(1.0, 1.0, 1.0, rng.randf_range(0.52, 0.80))
+		cloud.z_index = -16
+		add_child(cloud)
+
+# ---------------------------------------------------------------------------
 # Platform factory
 # ---------------------------------------------------------------------------
 func _create_platform(pos: Vector2, size: Vector2, color: Color) -> StaticBody2D:
@@ -112,14 +152,28 @@ func _create_platform(pos: Vector2, size: Vector2, color: Color) -> StaticBody2D
 	var rect: RectangleShape2D = RectangleShape2D.new()
 	rect.size = size
 	shape.shape = rect
-	# CollisionShape2D origin is centred; offset visual to match
 	body.add_child(shape)
 
+	# Main body
 	var visual: ColorRect = ColorRect.new()
 	visual.color = color
 	visual.size = size
-	visual.position = -size * 0.5  # centre on the body origin
+	visual.position = -size * 0.5
 	body.add_child(visual)
+
+	# Top highlight (grass/shine effect)
+	var hi := ColorRect.new()
+	hi.color = Color(minf(color.r + 0.28, 1.0), minf(color.g + 0.28, 1.0), minf(color.b + 0.28, 1.0), 0.95)
+	hi.size = Vector2(size.x, 5)
+	hi.position = Vector2(-size.x * 0.5, -size.y * 0.5)
+	body.add_child(hi)
+
+	# Bottom shadow
+	var sh := ColorRect.new()
+	sh.color = Color(maxf(color.r - 0.18, 0.0), maxf(color.g - 0.18, 0.0), maxf(color.b - 0.18, 0.0))
+	sh.size = Vector2(size.x, 5)
+	sh.position = Vector2(-size.x * 0.5, size.y * 0.5 - 5)
+	body.add_child(sh)
 
 	return body
 
