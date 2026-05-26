@@ -213,6 +213,8 @@ func _spawn_falling_platform(pos: Vector2) -> void:
 func _create_world_exit(pos: Vector2) -> void:
 	var area: Area2D = Area2D.new()
 	area.position = pos
+	area.collision_mask = 2   # detect Player layer
+	area.monitoring = true
 	add_child(area)
 
 	var shape: CollisionShape2D = CollisionShape2D.new()
@@ -248,7 +250,7 @@ func _on_exit_body_entered(body: Node2D) -> void:
 func _complete_world() -> void:
 	VillainDialog.show_dialog("world_complete")
 	GameManager.unlock_next_world()
-	# Wait for dialog then return to menu
+	SaveSystem.set_checkpoint(Vector2.ZERO)  # clear checkpoint for next world
 	await get_tree().create_timer(3.0).timeout
 	GameManager.go_to_main_menu()
 
@@ -259,6 +261,11 @@ func _spawn_player() -> void:
 	player = PLAYER_SCENE.instantiate() as Player
 	player.position = Vector2(100.0, 400.0)
 	add_child(player)
+
+	# Respawn at checkpoint if one was saved
+	var saved_cp: Vector2 = SaveSystem.get_checkpoint()
+	if saved_cp != Vector2.ZERO:
+		player.global_position = saved_cp
 
 	player.player_died.connect(_on_player_died)
 

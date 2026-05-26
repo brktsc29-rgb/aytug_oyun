@@ -145,6 +145,8 @@ func _spawn_player() -> void:
 	player.global_position = PLAYER_SPAWN
 	add_child(player)
 
+	SaveSystem.set_checkpoint(Vector2.ZERO)  # boss arena has no mid-checkpoints
+
 	# Register with the GameManager so other systems can find the player
 	if GameManager.has_method("register_player"):
 		GameManager.register_player(player)

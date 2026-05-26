@@ -311,6 +311,8 @@ func _spawn_timed_laser(pos: Vector2, on_t: float = 2.0, off_t: float = 1.5) -> 
 func _create_world_exit(pos: Vector2) -> void:
 	var area: Area2D = Area2D.new()
 	area.position = pos
+	area.collision_mask = 2   # detect Player layer
+	area.monitoring = true
 	add_child(area)
 
 	var shape: CollisionShape2D = CollisionShape2D.new()
@@ -343,8 +345,8 @@ func _on_exit_body_entered(body: Node2D) -> void:
 func _complete_world() -> void:
 	VillainDialog.show_dialog("world_complete")
 	GameManager.unlock_next_world()
+	SaveSystem.set_checkpoint(Vector2.ZERO)  # clear checkpoint for next world
 	await get_tree().create_timer(3.0).timeout
-	# Next world is Boss — load it directly
 	GameManager.load_world(2)
 
 # ---------------------------------------------------------------------------
@@ -352,9 +354,13 @@ func _complete_world() -> void:
 # ---------------------------------------------------------------------------
 func _spawn_player() -> void:
 	player = PLAYER_SCENE.instantiate() as Player
-	# Safe start: on the ground near the beginning
 	player.position = Vector2(80.0, 460.0)
 	add_child(player)
+
+	# Respawn at checkpoint if one was saved
+	var saved_cp: Vector2 = SaveSystem.get_checkpoint()
+	if saved_cp != Vector2.ZERO:
+		player.global_position = saved_cp
 
 	player.player_died.connect(_on_player_died)
 
