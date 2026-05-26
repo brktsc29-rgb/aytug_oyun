@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="120" viewBox="0 0 80 120">
+  <!-- Trunk -->
+  <rect x="32" y="80" width="16" height="40" rx="4" fill="#5c3010"/>
+  <rect x="36" y="82" width="5" height="36" rx="2" fill="#7a4018" opacity="0.5"/>
+  <!-- Tree crown bottom layer (darkest) -->
+  <ellipse cx="40" cy="75" rx="36" ry="28" fill="#1a6010"/>
+  <!-- Tree crown mid layer -->
+  <ellipse cx="40" cy="60" rx="30" ry="26" fill="#228a14"/>
+  <!-- Tree crown top layer (brightest) -->
+  <ellipse cx="40" cy="44" rx="22" ry="22" fill="#30b018"/>
+  <!-- Highlights -->
+  <ellipse cx="32" cy="38" rx="10" ry="8" fill="#48d028" opacity="0.5"/>
+  <ellipse cx="50" cy="62" rx="8" ry="6" fill="#1a6010" opacity="0.4"/>
+</svg>
